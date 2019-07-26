@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose =require('mongoose');
 const Schema = mongoose.Schema;
+
 
 // Define collection and schema for Student
 let Student = new Schema({

@@ -4,7 +4,7 @@ const express = require('express');
 const studentRoutes = express.Router();
 
 // Require student model in our routes module
-let Student = require('./model');
+let Student = require('../models/student');
 
 // Defined store route
 studentRoutes.route('/add').post(function (req, res) {
