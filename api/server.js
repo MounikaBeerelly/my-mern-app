@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser= require('body-parser');
 const config = require('./DB.js');
-const studentRoute = require('./route');
+const studentRoute = require('./routes/student');
 const userRoute= require('./routes/user')
 const socket= require('socket.io');
 
