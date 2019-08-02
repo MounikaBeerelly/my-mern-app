@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// eslint-disable-next-line
-import  App from '../App.css';
 
 export default class Create extends Component {
   constructor(props) {
