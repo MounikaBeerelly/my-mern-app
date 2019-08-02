@@ -55,6 +55,7 @@ export default class Create extends Component {
           name.length > 0 && 
           address.length > 0;
     return (
+      
         <div style={{ marginTop: 10 }}>
             <h3>Add New Student</h3>
             <form onSubmit={this.onSubmit}>
@@ -97,5 +98,6 @@ export default class Create extends Component {
             </form>
         </div>
     )
+    
   }
 }
