@@ -49,6 +49,11 @@ export default class Create extends Component {
   }
  
   render() {
+    const { student_Id, name, address } = this.state;
+    const enabled =
+          student_Id.length > 0 &&
+          name.length > 0 && 
+          address.length > 0;
     return (
         <div style={{ marginTop: 10 }}>
             <h3>Add New Student</h3>
@@ -87,7 +92,7 @@ export default class Create extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Register Student" className="btn btn-primary"/>
+                    <input type="submit" value="Register Student" className="btn btn-primary" disabled={!enabled}/>
                 </div>
             </form>
         </div>
