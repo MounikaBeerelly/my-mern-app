@@ -36,7 +36,6 @@ export default class Index extends Component {
                 <th>Student_ID</th>
                 <th>Name</th>
                 <th>Address</th>
-                <th>Email</th>
                 <th colSpan="2">Action</th>
               </tr>
             </thead>

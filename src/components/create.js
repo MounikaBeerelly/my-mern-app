@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// eslint-disable-next-line
+import  App from '../App.css';
 
 export default class Create extends Component {
   constructor(props) {
@@ -7,14 +9,12 @@ export default class Create extends Component {
     this.onChangeStudent_Id = this.onChangeStudent_Id.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeAddress = this.onChangeAddress.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       student_Id: '',
       name: '',
-      address:'',
-      email:''
+      address:''
     }
   }
   onChangeStudent_Id(e) {
@@ -32,19 +32,13 @@ export default class Create extends Component {
       address: e.target.value
     })
   }
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value
-    })
-  }
 
   onSubmit(e) {
     e.preventDefault();
     const obj = {
       student_Id: this.state.student_Id,
       name: this.state.name,
-      address: this.state.address,
-      email: this.state.email
+      address: this.state.address
     };
     axios.post('http://localhost:5001/student/add', obj)
         .then(res => console.log(res.data));
@@ -52,8 +46,7 @@ export default class Create extends Component {
     this.setState({
       student_Id: '',
       name: '',
-      address: '',
-      email: ''
+      address: ''
     })
   }
  
@@ -65,16 +58,19 @@ export default class Create extends Component {
                 <div className="form-group">
                     <label>Student ID:  </label>
                     <input 
-                      type="text" 
-                      className="form-control" 
-                      value={this.state.student_Id}
+                      type= "text" 
+                      className= "form-control"
+                      placeholder= "Student ID"
+                      value= {this.state.student_Id}
                       required
-                      onChange={this.onChangeStudent_Id}
+                      onChange= {this.onChangeStudent_Id}
                       />
                 </div>
                 <div className="form-group">
                     <label>Student Name: </label>
                     <input type="text" 
+                      placeholder= "name"
+                      maxLength= "40"
                       className="form-control"
                       value={this.state.name}
                       required
@@ -85,18 +81,11 @@ export default class Create extends Component {
                     <label>Address: </label>
                     <textarea
                       className="form-control"
+                      placeholder= "address"
+                      maxLength= "40"
                       value={this.state.address}
                       required
                       onChange={this.onChangeAddress}
-                      />
-                </div>
-                <div className="form-group">
-                    <label>Email: </label>
-                    <input type="email"
-                      className="form-control"
-                      value={this.state.email}
-                      required
-                      onChange={this.onChangeEmail}
                       />
                 </div>
                 <div className="form-group">

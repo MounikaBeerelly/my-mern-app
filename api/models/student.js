@@ -12,10 +12,7 @@ let Student = new Schema({
   },
   address: {
     type: String
-  },
-  email: {
-    type: String
-  }
+  }, 
 },{
     collection: 'student'
 });

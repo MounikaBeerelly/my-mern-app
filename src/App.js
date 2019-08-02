@@ -35,7 +35,7 @@ class App extends Component {
          <h2>Welcome to MERN Sample  CRUD Application</h2>
          <Switch>
            <Route exact path='/create' component= { Create } />
-           <Route path='/edit' component= { Edit } />
+           <Route path='/edit/:id' component= { Edit } />
            <Route path='/index' component= { Index } /> 
            <Route path='/user' component= { User} /> 
          </Switch>

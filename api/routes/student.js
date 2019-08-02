@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const studentRoutes = express.Router();
 
@@ -44,11 +42,9 @@ studentRoutes.route('/update/:id').post(function (req, res) {
     if (!student)
       res.status(404).send("data is not found");
     else {
-        student.student_Id = req.body.student_id;
+        student.student_Id = req.body.student_Id;
         student.name = req.body.name;
         student.address = req.body.address;
-        student.email =req.body.email;
-
         student.save().then(student => {
           res.json('Update complete');
 
