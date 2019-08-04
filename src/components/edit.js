@@ -12,7 +12,9 @@ export default class Edit extends Component {
     this.state = {
       student_Id: '',
       name: '',
-      address:''
+      address:'',
+      isFlag: false,
+      msg: ''
     }
   }
 
@@ -52,13 +54,27 @@ export default class Edit extends Component {
       address: this.state.address
     };
     axios.post('http://localhost:5001/student/update/'+this.props.match.params.id, obj)
-        .then(res => console.log(res.data));
-    
-    this.props.history.push('/index');
+        .then(res =>{
+          this.setState({msg: res.data.message});
+              } );
+              setTimeout(
+                function() {
+                   this.props.history.push('/index');
+                }
+                .bind(this),
+                3000
+            );
+    this.setState({
+      student_Id: '',
+      name: '',
+      address: '',
+      isFlag: true
+    })
   }
  
   render() {
     const { student_Id, name, address } = this.state;
+    const msg = this.state.msg;
     const enabled =
           student_Id.length > 0 &&
           name.length > 0 && 
@@ -66,6 +82,7 @@ export default class Edit extends Component {
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">Update Student</h3>
+            {this.state.isFlag && <div className="alert alert-success">{msg}</div>} 
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>Student ID:  </label>

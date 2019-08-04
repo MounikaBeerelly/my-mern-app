@@ -47,11 +47,11 @@ studentRoutes.route('/update/:id').post(function (req, res) {
         student.name = req.body.name;
         student.address = req.body.address;
         student.save().then(student => {
-          res.json('Update complete');
+          res.status(200).json({'message': 'student is updataed successfully'});
 
         })
       .catch(err => {
-            res.status(400).send("unable to update the database");
+            res.status(500).send("unable to update the database");
       });
     }
   });
