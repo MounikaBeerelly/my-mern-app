@@ -48,7 +48,6 @@ studentRoutes.route('/edit/:id').get(function (req, res) {
       res.json(student);
   });
 });
-
 //  Defined update route
 studentRoutes.route('/update/:id').post(function (req, res) {
     Student.findById(req.params.id, function(err, student) {
