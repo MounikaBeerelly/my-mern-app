@@ -9,10 +9,11 @@ studentRoutes.route('/add').post(function (req, res) {
   let student = new Student(req.body);
   student.save()
     .then(student => {
-      res.status(200).json({'student': 'student is added successfully'});
+      res.status(200).json({'message': 'student is added successfully'});
     })
     .catch(err => {
-    res.status(400).send("unable to save to database");
+      res.status(500).json({"Code":"DUPLICATE KEY", "message":err.errmsg});
+
     });
 });
 

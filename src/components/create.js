@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// eslint-disable-next-line
-import  App from '../App.css';
 
 export default class Create extends Component {
   constructor(props) {
@@ -14,7 +12,9 @@ export default class Create extends Component {
     this.state = {
       student_Id: '',
       name: '',
-      address:''
+      address:'',
+      isFlag: false,
+      msg: ''
     }
   }
   onChangeStudent_Id(e) {
@@ -40,20 +40,35 @@ export default class Create extends Component {
       name: this.state.name,
       address: this.state.address
     };
-    axios.post('http://localhost:5001/student/add', obj)
-        .then(res => console.log(res.data));
+        axios.post('http://localhost:5001/student/add', obj)
+        .then(res =>{ 
+            this.setState({msg: res.data.message});
+        })
+        .catch(err => {
+          this.setState({msg: err.response.data.message});
+        });
+
     
     this.setState({
       student_Id: '',
       name: '',
-      address: ''
+      address: '',
+      isFlag: true
     })
   }
  
   render() {
+    const { student_Id, name, address } = this.state;
+    const msg = this.state.msg;
+     const enabled =
+          student_Id.length > 0 &&
+          name.length > 0 && 
+          address.length > 0;
     return (
+      
         <div style={{ marginTop: 10 }}>
             <h3>Add New Student</h3>
+            {this.state.isFlag && <div className="alert alert-success">{msg}</div>}
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>Student ID:  </label>
@@ -89,10 +104,11 @@ export default class Create extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Register Student" className="btn btn-primary"/>
+                    <input type="submit" value="Register Student" className="btn btn-primary" disabled={!enabled}/>
                 </div>
             </form>
         </div>
     )
+    
   }
 }

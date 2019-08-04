@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const unique = require('mongoose-unique-validator');
 const validate = require('mongoose-validator');
+mongoose.set('useCreateIndex', true);
+
 
 const nameValidator = [
   validate({

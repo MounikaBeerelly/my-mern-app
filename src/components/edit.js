@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// eslint-disable-next-line 
-import App from '../App.css';
 
 export default class Edit extends Component {
   constructor(props) {
@@ -60,6 +58,11 @@ export default class Edit extends Component {
   }
  
   render() {
+    const { student_Id, name, address } = this.state;
+    const enabled =
+          student_Id.length > 0 &&
+          name.length > 0 && 
+          address.length > 0;
     return (
         <div style={{ marginTop: 10 }}>
             <h3 align="center">Update Student</h3>
@@ -100,7 +103,8 @@ export default class Edit extends Component {
                 <div className="form-group">
                     <input type="submit" 
                       value="Update Student" 
-                      className="btn btn-primary"/>
+                      className="btn btn-primary"
+                      disabled={!enabled}/>
                 </div>
             </form>
         </div>
