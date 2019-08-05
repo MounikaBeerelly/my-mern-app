@@ -1,20 +1,21 @@
 const mongoose =require('mongoose');
-
 const Schema = mongoose.Schema;
 
-// Define collection and schema for Student
-let Student = new Schema({
+// create a schema
+const StudentSchema =new Schema({
   student_Id: {
-    type: Number
+    type: Number,
+    required: true,
+    unique: true
   },
   name: {
-    type: String
+    type: String,
+    required: true
   },
   address: {
-    type: String
-  }, 
-},{
-    collection: 'student'
+    type: String,
+    required: true
+  }
 });
 
-module.exports = mongoose.model('Student', Student);
+module.exports = mongoose.model('student', StudentSchema);
